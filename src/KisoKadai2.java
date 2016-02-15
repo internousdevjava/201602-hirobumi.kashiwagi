@@ -53,7 +53,7 @@ public class KisoKadai2 {
 					
 				}
 				while(true){
-					System.out.println("プログラムを終了しますか。(YESかNOで入力してください)");
+					System.out.println("ゲームを終了しますか。(YESかNOで入力してください)");
 					String conte = br.readLine();
 					if(conte.equalsIgnoreCase("YES")){
 						break label;

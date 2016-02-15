@@ -18,15 +18,40 @@ public class KisoKadai1 {
 	 */
 	public static void main(String[] args) throws IOException {
 		
+		String x;
+		String y;
+		int q;
+		int w;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		label: while(true){
 			try{
 				System.out.println("0以上の数字を2つ入力してください。");
 				
-				String x = br.readLine();
-				String y = br.readLine();
-				int q = Integer.parseInt(x);
-				int w = Integer.parseInt(y);
+				
+				
+				System.out.print("一番目");
+				
+				while(true){
+					x = br.readLine();
+					q = Integer.parseInt(x);
+					if(0<q){
+						break;
+					}else{
+						System.out.println("0以上の数字を入力してください");
+					}
+				}
+				
+				System.out.println("二番目");
+				
+				while(true){
+					y = br.readLine();
+					w = Integer.parseInt(y);
+					if(0<w){
+						break;
+					}else{
+						System.out.println("0以上の数字を入力してください");
+					}
+				}
 				
 				System.out.println(" ");
 				for(int b = 1;b<w+1;b++){
@@ -45,7 +70,7 @@ public class KisoKadai1 {
 				}
 			}catch(Exception e){
 				System.out.println("入力エラーです。");
-				System.out.println("使用できるのは0から2147483647までの整数です");
+				System.out.println("使用できるのは1から2147483647までの整数です");
 			}
 			
 			while(true){
