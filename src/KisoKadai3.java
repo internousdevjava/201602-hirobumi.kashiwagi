@@ -44,7 +44,6 @@ public class KisoKadai3 {
 					if(file.exists()){
 						
 						x = x + "\\";
-						System.out.println(x);
 						
 						System.out.println("ファイル名を指定してください。");
 						String y = br.readLine();
@@ -90,8 +89,12 @@ public class KisoKadai3 {
 						}
 					
 					}else{
-						System.out.println(x);
-						
+						int point = y.lastIndexOf(".");
+					    if (point != -1) {
+					        y = y.substring(0,point);
+					    } 
+						y = y.concat(".txt");
+						file = new File(y);
 						FileOutputStream fos = new FileOutputStream(file);
 						OutputStreamWriter osw = new OutputStreamWriter(fos);
 						PrintWriter pw = new PrintWriter(osw);

@@ -64,7 +64,8 @@ public class KisoKadai2 {
 					
 				}
 			}catch(Exception e){
-				System.out.println("数字以外の文字か大きすぎる又は小さすぎる数字が入力されています。");
+				System.out.println("入力エラーです。");
+				System.out.println("使用できるのは0から2147483647までの整数です");
 				while(true){
 					System.out.println("ゲームを終了しますか。(YESかNOで入力してください)");
 					String conte = br.readLine();

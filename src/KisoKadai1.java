@@ -27,28 +27,25 @@ public class KisoKadai1 {
 				String y = br.readLine();
 				int q = Integer.parseInt(x);
 				int w = Integer.parseInt(y);
-				if(q<0 || 100<q){
-					System.out.println("t");
-				}
-				System.out.print(" ");
-				for(int a = 0 ;a< q;a++){
-					
-					System.out.print(" ");
-					System.out.print(a+1);
-					
-				}
+				
 				System.out.println(" ");
-				for(int b = 0;b<w;b++){
-					System.out.print(b+1);
-					System.out.print(" ");
-					for(int a = 0;a<q;a++){
-						System.out.print((a+1) * (b+1));
-						System.out.print(" ");
+				for(int b = 1;b<w+1;b++){
+					for(int a = 1;a<q+1;a++){
+						int num = a*b;
+						if(num>=100){
+							System.out.print(" "+num);
+						}else if(num>=10){
+							System.out.print("  "+num);
+						}else{
+							System.out.print("   "+ num);
+					}
+						
 					}
 					System.out.println();
 				}
 			}catch(Exception e){
-				System.out.println("数字以外の文字か大きすぎる又は小さすぎる数字が入力されています。");
+				System.out.println("入力エラーです。");
+				System.out.println("使用できるのは0から2147483647までの整数です");
 			}
 			
 			while(true){
