@@ -25,9 +25,8 @@ public class KisoKadai1 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		label: while(true){
 			try{
+				System.out.println("掛け算表を作ります。");
 				System.out.println("0以上の数字を2つ入力してください。");
-				
-				
 				
 				System.out.print("一番目");
 				

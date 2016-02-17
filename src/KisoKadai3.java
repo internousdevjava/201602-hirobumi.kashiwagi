@@ -1,11 +1,13 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  * 
@@ -21,13 +23,16 @@ public class KisoKadai3 {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException{
+		
+		Scanner stdIn = new Scanner(System.in, "UTF-8");
+
 		// TODO 自動生成されたメソッド・スタブ
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		label:while(true){
 			File file;
 			try{
-				
+				System.out.println("ファイルの作成読み込みを行います。");
 				System.out.println("ファイルに入力する場合は0を、ファイルを読み込む場合は1を入力してください");
 				String i = br.readLine();
 				int j = Integer.parseInt(i);
@@ -36,8 +41,9 @@ public class KisoKadai3 {
 				
 				switch (j) {
 				case 0:
-					
+					System.out.println("ファイルを作成します。");
 					System.out.println("ファイルを作成するフォルダ名を指定してください。");
+					System.out.println("例:C:\\Users\\Public");
 					x = br.readLine();
 					
 					file = new File(x);
@@ -135,6 +141,7 @@ public class KisoKadai3 {
 					
 				case 1:
 					System.out.println("読み込むファイルのフォルダ名とファイル名を入力してください。");
+					System.out.println("例:C:\\eclipse\\test.txt");
 					x = br.readLine();
 					
 					int point = x.lastIndexOf(".");
@@ -191,21 +198,45 @@ public class KisoKadai3 {
 						
 					}
 				}
-			}catch(Exception e){
-				e.printStackTrace();
+			}catch(NumberFormatException e){
+				System.out.println("0又は1以外のものが入力されたためエラーが発生しました。");
 				while(true){
+					
 					System.out.println("プログラムを終了しますか。(YESかNOで入力してください)");
-					String conte = br.readLine();
-					if(conte.equalsIgnoreCase("YES")){
-						break label;
-					}else if(conte.equalsIgnoreCase("NO")){
-						continue label;
+					String conte;
+					try {
+						conte = br.readLine();
+						if(conte.equalsIgnoreCase("YES")){
+							break label;
+						}else if(conte.equalsIgnoreCase("NO")){
+							continue label;
+						}
+					} catch (IOException e1) {
+						
 					}
 					
 				}
-			}	
+			}catch (FileNotFoundException e) {
+				// TODO: handle exception
+				System.out.println("ファイルが見つからないかアクセスできないファイルが指定されました。");
+				while(true){
+					
+					System.out.println("プログラムを終了しますか。(YESかNOで入力してください)");
+					String conte;
+					try {
+						conte = br.readLine();
+						if(conte.equalsIgnoreCase("YES")){
+							break label;
+						}else if(conte.equalsIgnoreCase("NO")){
+							continue label;
+						}
+					}catch(IOException ex){
+						
+					}
+					
+				}
+			}
 		}
-			
 			
 			}
 		}
