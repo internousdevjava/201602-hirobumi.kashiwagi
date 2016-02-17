@@ -41,9 +41,14 @@ public class KisoKadai3 {
 					x = br.readLine();
 					
 					file = new File(x);
-					if(file.exists()){
+					char c = x.charAt(x.length()-1);
+					if(c != '\\'){
 						
 						x = x + "\\";
+					}
+					
+					System.out.println(x);
+					if(file.exists()){
 						
 						System.out.println("ファイル名を指定してください。");
 						String y = br.readLine();
@@ -52,7 +57,13 @@ public class KisoKadai3 {
 						
 						file = new File(y);
 					if(file.exists()){
-						
+						//拡張子をテキストファイルに変更
+						int point = y.lastIndexOf(".");
+					    if (point != -1) {
+					        y = y.substring(0,point);
+					    } 
+						y = y.concat(".txt");
+						//
 						while(true){
 							System.out.println("ファイルが存在します。上書きしますか。(YESかNOで入力してください)");
 							String conte = br.readLine();
@@ -89,11 +100,14 @@ public class KisoKadai3 {
 						}
 					
 					}else{
+						//拡張子をテキストファイルに変更
+						System.out.println("ファイルが存在しません。新規作成します。");
 						int point = y.lastIndexOf(".");
 					    if (point != -1) {
 					        y = y.substring(0,point);
 					    } 
 						y = y.concat(".txt");
+						//
 						file = new File(y);
 						FileOutputStream fos = new FileOutputStream(file);
 						OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -123,7 +137,13 @@ public class KisoKadai3 {
 					System.out.println("読み込むファイルのフォルダ名とファイル名を入力してください。");
 					x = br.readLine();
 					
+					int point = x.lastIndexOf(".");
+				    if (point != -1) {
+				        x = x.substring(0,point);
+				    } 
+					x = x.concat(".txt");
 					file = new File(x);
+					
 					if(file.exists()){
 						FileReader filer = new FileReader(file);
 						BufferedReader br1 = new BufferedReader(filer);
