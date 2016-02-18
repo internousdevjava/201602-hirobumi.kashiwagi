@@ -26,33 +26,36 @@ public class KisoKadai1 {
 		label: while(true){
 			try{
 				System.out.println("掛け算表を作ります。");
-				System.out.println("0以上の数字を2つ入力してください。");
+				System.out.print("0以上の数字を2つ入力してください。(0～9の間で入力してください。)");
 				
-				System.out.print("一番目");
+				System.out.print("横の範囲");
 				
 				while(true){
+					
 					x = br.readLine();
 					q = Integer.parseInt(x);
-					if(0<q){
+					if(1<=q && q<=9){
 						break;
 					}else{
-						System.out.println("0以上の数字を入力してください");
+						System.out.print("0～9の間で入力してください。");
+						continue;
 					}
 				}
 				
-				System.out.println("二番目");
+				System.out.print("縦の範囲(0～9の間で入力してください。)");
 				
 				while(true){
+					
 					y = br.readLine();
 					w = Integer.parseInt(y);
-					if(0<w){
+					if(1<=w && w<=9){
 						break;
 					}else{
-						System.out.println("0以上の数字を入力してください");
+						System.out.print("0～9の間で入力してください。");
+						continue;
 					}
 				}
 				
-				System.out.println(" ");
 				for(int b = 1;b<w+1;b++){
 					for(int a = 1;a<q+1;a++){
 						int num = a*b;
@@ -69,7 +72,7 @@ public class KisoKadai1 {
 				}
 			}catch(Exception e){
 				System.out.println("入力エラーです。");
-				System.out.println("使用できるのは1から2147483647までの整数です");
+				System.out.println("使用できるのは1から9までの整数です");
 			}
 			
 			while(true){
