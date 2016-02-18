@@ -56,7 +56,7 @@ public class KisoKadai3 {
 					System.out.println(x);
 					if(file.exists()){
 						
-						System.out.println("ファイル名を指定してください。");
+						System.out.println("作成したいファイル名をしてください。");
 						String y = br.readLine();
 						
 						y = x.concat(y);
@@ -126,7 +126,85 @@ public class KisoKadai3 {
 						System.out.println("ファイルに書き込みました。");
 					}
 					}else{
-						System.out.println("フォルダが存在しません");
+						System.out.println("フォルダが存在しなかったため作成します。");
+						
+						file = new File(x);
+					
+						file.mkdir();
+						
+						c = x.charAt(x.length()-1);
+						if(c != '\\'){
+							
+							x = x + "\\";
+						}
+						System.out.println("作成したいファイル名を入力してください。");
+						String y = br.readLine();
+						
+						y = x.concat(y);
+						
+						file = new File(y);
+					if(file.exists()){
+						//拡張子をテキストファイルに変更
+						int point = y.lastIndexOf(".");
+					    if (point != -1) {
+					        y = y.substring(0,point);
+					    } 
+						y = y.concat(".txt");
+						//
+						while(true){
+							System.out.println("ファイルが存在します。上書きしますか。(YESかNOで入力してください)");
+							String conte = br.readLine();
+							if(conte.equalsIgnoreCase("YES")){
+								
+								FileOutputStream fos = new FileOutputStream(file,true);
+								OutputStreamWriter osw = new OutputStreamWriter(fos);
+								PrintWriter pw = new PrintWriter(osw);
+								
+								System.out.println("ファイルに入力する文字を入力してください。");
+								String b = br.readLine();
+								pw.println(b);
+								
+								pw.close();
+								
+								System.out.println("ファイルに書き込みました。");
+								break;
+							}else if(conte.equalsIgnoreCase("NO")){
+								
+								FileOutputStream fos = new FileOutputStream(file,false);
+								OutputStreamWriter osw = new OutputStreamWriter(fos);
+								PrintWriter pw = new PrintWriter(osw);
+								
+								System.out.println("ファイルに入力する文字を入力してください。");
+								String b = br.readLine();
+								pw.println(b);
+								
+								pw.close();
+								
+								System.out.println("ファイルに書き込みました。");
+								break;
+							}
+							
+						}
+					
+					}else{
+						//拡張子をテキストファイルに変更
+						System.out.println("ファイルが存在しません。新規作成します。");
+						int point = y.lastIndexOf(".");
+					    if (point != -1) {
+					        y = y.substring(0,point);
+					    } 
+						y = y.concat(".txt");
+						//
+						file = new File(y);
+						FileOutputStream fos = new FileOutputStream(file);
+						OutputStreamWriter osw = new OutputStreamWriter(fos);
+						PrintWriter pw = new PrintWriter(osw);
+						System.out.println("ファイルに入力する文字を入力してください。");
+						String b = br.readLine();
+						pw.println(b);
+						
+						pw.close();
+						System.out.println("ファイルに書き込みました。");
 					}
 					while(true){
 						System.out.println("プログラムを終了しますか。(YESかNOで入力してください)");
@@ -138,7 +216,7 @@ public class KisoKadai3 {
 						}
 						
 					}
-					
+					}
 				case 1:
 					System.out.println("読み込むファイルのフォルダ名とファイル名を入力してください。");
 					System.out.println("例:C:\\eclipse\\test.txt");
